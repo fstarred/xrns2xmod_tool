@@ -125,6 +125,7 @@ function show_converter_dialog()
   
   -- checkbox pro tracker compatibility
   -- deprecated
+  --[[
   local checkbox_protracker_comp = vb:checkbox {
     -- active = conv_type_value == TYPE_MOD,
     value = ptmode,
@@ -132,6 +133,7 @@ function show_converter_dialog()
       my_options.ptmode.value = value;
     end,
   }
+  ]]
   
   -- popup protracker compatibility mode
   local popup_protracker_comp_mode = vb:popup {

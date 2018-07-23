@@ -149,7 +149,7 @@ function call_executable(input_file)
     args = args .. " -ntsc=true "
   end
   
-  args = args .. ' -ptmode=' .. (ptmode and 'true' or 'false')
+  --args = args .. ' -ptmode=' .. (ptmode and 'true' or 'false')
   
   args = args .. ' -portresh=' .. portamento_accuracy_threshold
     

@@ -120,7 +120,7 @@ function save_ini_settings()
   local conf = { }
   conf['volume'] = { }
   conf['frequency'] = { }
-  conf['sinc'] = {}
+  conf['sinc'] = { }
   
   for ki, vi in ipairs(renoise.song().instruments) do
   
@@ -152,9 +152,13 @@ function save_ini_settings()
     
   end
   
+  rprint(conf)
+  
   local ini_file = get_ini_filename()
   
-  if ( (table.is_empty( conf['volume']) and table.is_empty(conf['frequency']) ) == false ) then
+  if ( (table.is_empty( conf['volume']) and 
+        table.is_empty(conf['frequency']) and
+        table.is_empty(conf['sinc']))  == false ) then
     
     renoise.app():show_status('Settings saved to ' .. ini_file)
     save_configuration(ini_file, conf)
@@ -412,7 +416,7 @@ local function init_instrument_settings(conf)
     
   end
   
-  rprint(instrument_settings)
+  --rprint(instrument_settings)
   
 end
 

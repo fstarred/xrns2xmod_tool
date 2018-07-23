@@ -23,7 +23,7 @@ my_options = renoise.Document.create("Xrns2XModPreferences") {
  initial_tempo = DEFAULT_BPM,
  initial_ticks = DEFAULT_TICKS_ROW,
  portamento_accuracy_threshold = DEFAULT_PORTAMENTO_ACCURACY_THRESHOLD,
- pt_comp_mode = PROTRACKER_COMPATIBILITY_MODE_SOFTWARE,
+ pt_comp_mode = PROTRACKER_COMPATIBILITY_MODE_HARDWARE,
  pt_freq_mode = FREQ_PAL
 }
 
@@ -35,8 +35,8 @@ app_path = my_options.app_path.value
 convfreq = my_options.convfreq.value
 conv_type_value = my_options.conv_type_value.value
 --ptmode = my_options.ptmode.value
-pt_comp_mode = PROTRACKER_COMPATIBILITY_MODE_SOFTWARE
-pt_freq_mode = FREQ_PAL
+pt_comp_mode = my_options.pt_comp_mode.value
+pt_freq_mode = my_options.pt_freq_mode.value
 modvol = my_options.modvol.value
 initial_tempo = my_options.initial_tempo.value
 initial_ticks = my_options.initial_ticks.value
