@@ -1,12 +1,12 @@
 <RenoiseScriptingTool doc_version="0">
   <ApiVersion>5</ApiVersion>
   <Id>it.xrns2xmod.Xrns2xmod</Id>
-  <Version>3.60</Version>
-  <Author>zenon [fabrizio.stellato@gmail.com]</Author>
+  <Version>3.70</Version>
+  <Author>Starred MediaSoft [fabrizio.stellato@gmail.com]</Author>
   <Name>Xrns2XMod</Name>
   <Category>Converter</Category>
   <Description>Xrns2XMod is a tool that convert a Renoise song file (.XRNS) to MOD or XM format</Description>
-  <Homepage>http://xrns2xmod.codeplex.com/</Homepage>
+  <Homepage>https://github.com/fstarred/xrns2xmod/</Homepage>
   <Icon>icon.png</Icon>
   <Platform>Windows, Mac, Linux</Platform>
 </RenoiseScriptingTool>
