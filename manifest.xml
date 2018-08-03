@@ -6,7 +6,7 @@
   <Name>Xrns2XMod</Name>
   <Category>Converter</Category>
   <Description>Xrns2XMod is a tool that convert a Renoise song file (.XRNS) to MOD or XM format</Description>
-  <Homepage>https://github.com/fstarred/xrns2xmod/</Homepage>
+  <Homepage>http://github.com/fstarred/xrns2xmod/</Homepage>
   <Icon>icon.png</Icon>
   <Platform>Windows, Mac, Linux</Platform>
 </RenoiseScriptingTool>
