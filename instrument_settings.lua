@@ -84,9 +84,9 @@ end
 function set_instrument_basenote(ki, ks, index)
 
   if instrument_settings[ki][ks] ~= nil then      
-    print('set_instrument_basenote: ' .. base_notes[index])    
+    --print('set_instrument_basenote: ' .. base_notes[index])    
     instrument_settings[ki][ks]['frequency'] = base_notes[index]
-    print ('instrument settings saved: ' .. instrument_settings[ki][ks]['frequency'])
+    --print ('instrument settings saved: ' .. instrument_settings[ki][ks]['frequency'])
   end
 
 end
@@ -94,9 +94,9 @@ end
 function set_instrument_frequency_alias(ki, ks, index)
 
   if instrument_settings[ki][ks] ~= nil then      
-    print('set_instrument_frequency_alias: ' .. frequency_settings_alias[index])
+    --print('set_instrument_frequency_alias: ' .. frequency_settings_alias[index])
     instrument_settings[ki][ks]['frequency'] = frequency_settings_alias[index]
-    print ('instrument settings saved: ' .. instrument_settings[ki][ks]['frequency'])
+    --print ('instrument settings saved: ' .. instrument_settings[ki][ks]['frequency'])
   end
 
 end
@@ -104,9 +104,9 @@ end
 function set_instrument_frequency(ki, ks, value)
 
   if instrument_settings[ki][ks] ~= nil then  
-    print('set_instrument_frequency: ' .. value)
+    --print('set_instrument_frequency: ' .. value)
     instrument_settings[ki][ks]['frequency'] = value            
-    print ('instrument settings saved: ' .. instrument_settings[ki][ks]['frequency'])
+    --print ('instrument settings saved: ' .. instrument_settings[ki][ks]['frequency'])
   end
 
 end
@@ -152,7 +152,7 @@ function save_ini_settings()
     
   end
   
-  rprint(conf)
+  --rprint(conf)
   
   local ini_file = get_ini_filename()
   
@@ -215,7 +215,7 @@ end
 
 function load_instrument_basenote( instr_index, sample_index)  
 
-  print('load_instrument_basenote')
+  --print('load_instrument_basenote')
 
   local default_value = table.find(base_notes, 'C-2')
 
@@ -227,7 +227,7 @@ function load_instrument_basenote( instr_index, sample_index)
 
   local strvalue = tostring( value )
   
-  print('cur_val:' .. strvalue)
+  --print('cur_val:' .. strvalue)
 
   if strvalue ~= nil and strvalue:match('^[A-Ga-g][-#][2-3]$') then  
     return table.find(base_notes, strvalue)
@@ -247,7 +247,7 @@ end
 
 function load_instrument_frequency( instr_index, sample_index)
 
-  print('load_instrument_frequency')
+  --print('load_instrument_frequency')
 
   local default_value = SAMPLE_FREQUENCY_LOW
 
@@ -259,7 +259,7 @@ function load_instrument_frequency( instr_index, sample_index)
   
   local strvalue = tostring(value)
   
-  print("cur value: " .. strvalue)
+  --print("cur value: " .. strvalue)
   
   if strvalue:match('^[0-9]') then  
     return SAMPLE_FREQUENCY_CUSTOM
@@ -282,7 +282,7 @@ end
 
 function load_instrument_frequency_rate( instr_index, sample_index)  
 
-  print('load_instrument_frequency_rate')
+  --print('load_instrument_frequency_rate')
 
   if instrument_settings[instr_index][sample_index] == nil then
     return MIN_SAMPLE_RATE
@@ -294,7 +294,7 @@ function load_instrument_frequency_rate( instr_index, sample_index)
   
   local output = tonumber(value)
 
-  print("cur value: " .. value)
+  --print("cur value: " .. value)
   
   if output ~= nil then  
     return output
@@ -429,6 +429,32 @@ function reset_instrument_values(ki, ks)
   end
   
   renoise.app():show_status('Sample settings reset to its default value ')
+
+end
+
+function apply_values_to_all(frequency_popup, frequency_rate, frequency_basenote, sinc)
+
+  for ki, vi in ipairs(renoise.song().instruments) do
+  
+    for ks, vs in ipairs(renoise.song().instruments[ki].samples) do
+    
+      if renoise.song().instruments[ki].samples[ks].sample_buffer.has_sample_data then
+      
+        if frequency_popup == SAMPLE_FREQUENCY_ORIGINAL then    
+          instrument_settings[ki][ks]['frequency'] = 'Original'
+        elseif frequency_popup == SAMPLE_FREQUENCY_CUSTOM then
+          instrument_settings[ki][ks]['frequency'] = frequency_rate
+        elseif frequency_popup == SAMPLE_FREQUENCY_BASENOTE then
+          instrument_settings[ki][ks]['frequency'] = base_notes[frequency_basenote]
+        else
+          instrument_settings[ki][ks]['frequency'] = frequency_settings_alias[frequency_popup]
+        end
+        
+        instrument_settings[ki][ks]['sinc'] = tonumber(sinc)-1
+      end
+      
+    end
+  end    
 
 end
 

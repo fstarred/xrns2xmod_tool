@@ -42,7 +42,7 @@ function show_instrument_settings_dialog()
   -- triggered on instrument / sample change
   local function load_instrument_settings(instument, sample, handler)
 
-    print('load_instrument_settings [start]' .. instument, sample, handler)
+    --print('load_instrument_settings [start]' .. instument, sample, handler)
     
     local volume = load_instrument_volume(instument, sample)
     --local freq = load_instrument_frequency(instument, sample)
@@ -60,7 +60,7 @@ function show_instrument_settings_dialog()
       disable_set_instrument = false
     --end
     
-    print('load_instrument_settings [end]' .. instument, sample, handler)
+    --print('load_instrument_settings [end]' .. instument, sample, handler)
     
   end
   
@@ -364,6 +364,20 @@ function show_instrument_settings_dialog()
             vb.views.valuebox_volume.value = tonumber(volume)
             vb.views.popup_sample_frequency.value = tonumber(freq)
             vb.views.popup_sinc.value = sinc
+          end
+        },   
+      vb:button
+        {
+          text = "Apply to all",
+          notifier = function()
+          
+            local frequency_popup = vb.views.popup_sample_frequency.value
+            local frequency_rate = vb.views.valuebox_frequency.value
+            local frequency_basenote = vb.views.popup_basenote.value
+            local sinc = vb.views.popup_sinc.value
+             
+            apply_values_to_all(frequency_popup, frequency_rate, frequency_basenote, sinc)
+            
           end
         },      
     },
