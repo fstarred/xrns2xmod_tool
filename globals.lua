@@ -14,7 +14,7 @@
 -- the notifications.app_new_document functions or in your action callbacks...
 
 XRNS2XMOD_URL = "https://github.com/fstarred/xrns2xmod/";
-XRNS2XMOD_EXE = "Xrns2XModShell.exe";
+XRNS2XMOD_EXE_EXTENSION = "exe";
 XRNS2XMOD_DOC_URL = "https://github.com/fstarred/xrns2xmod/wiki";
 XRNS2XMOD_TUTORIAL_VIDEO_URL = "http://www.youtube.com/playlist?list=PLZZHTXBWLnp8L60rT10UOZCqe0m5J9Uyr";
 XRNS2XMOD_VERSION_INFO_URL = 'http://starredmediasoft.com/xrns2xmod_updater.xml'

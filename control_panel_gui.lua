@@ -90,7 +90,7 @@ function show_controlpanel_dialog()
     width = 30,   
     notifier = function()
     
-      local exe_file = renoise.app():prompt_for_filename_to_read({XRNS2XMOD_EXE}, "Locate Xrns2XMod Path");
+      local exe_file = renoise.app():prompt_for_filename_to_read({XRNS2XMOD_EXE_EXTENSION}, "Locate Xrns2XMod executable: e.g. Xrns2XModShell.exe");
   
       local is_app_found = #exe_file > 0
       
